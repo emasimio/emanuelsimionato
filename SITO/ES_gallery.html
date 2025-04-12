@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+<link rel="stylesheet" href="ES_style.css">
+</head>
+<body>
+    <!-- Barra di navigazione -->
+    <nav>
+        <div class="left-nav">
+            <a href="ES_home.html" onclick="showSection('work')">Work</a>
+            <a href="ES_gallery.html" class="active" onclick="showSection('gallery')">Gallery</a>
+        </div>
+        <div class="right-nav">
+            <a href="ES_about.html" onclick="showSection('about')">Emanuel Simionato</a>
+        </div>
+        <div class="project-title-detail"><span>:)</span>Selected Motion, Type & Graphic work</div>
+    </nav>
+
+    <!-- Contenuto principale con sezioni scorrevoli -->
+    <main>
+        <!-- Sezione dei progetti (Work) con immagini e video -->
+        <section id="work">
+
+            <div class="home">
+                <div class="home-image">
+                    <video src="img/G1_Bugs.mp4" autoplay loop muted></video>
+                </div>
+            </div>
+
+            <div class="home">
+                <div class="home-image">
+                    <video src="img/G2_Dirty.mp4" autoplay loop muted></video>
+                </div>
+            </div>
+        </section>
+
+
+        
+    </section>
+</main>
+<script src="ES_script.js"></script>
+
+</body>
+</html>

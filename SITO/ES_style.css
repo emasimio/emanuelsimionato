@@ -1,0 +1,529 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, sans-serif;
+    color: white;
+}
+
+@font-face {
+    font-family: 'SuisseIntl';
+    src: url('fonts/SuisseIntl-Regular.otf') format('woff2'),
+         url('fonts/SuisseIntl-Regular.otf') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    font-family: 'SuisseIntl', sans-serif;
+}
+
+
+body {
+    overflow-x: hidden;
+    background: #000;
+}
+
+
+/* Stili per la barra di navigazione */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 0.5rem;
+    background: hsla(0, 0%, 0%, 0); /* Sfondo semi-trasparente */
+    backdrop-filter: blur(0px); /* Effetto di sfocatura */
+     /* Porta la barra in primo piano */
+    display: flex;
+    justify-content: space-between;
+    z-index: 1;
+}
+
+.left-nav {
+    display: flex;
+    gap: 1.5rem; /* Spaziatura tra i link */
+    z-index: 1100;
+}
+
+/* Stili per i link nella barra di navigazione */
+nav a {
+text-decoration: none;
+color: white;
+font-weight: Regular;
+font-size: 22pt;
+opacity: 0.5; /* Default opacity for all links */
+transition: opacity 0.3s ease; /* Smooth transition for hover */
+ }
+nav a.active {
+    opacity: 1; /* Full opacity for the active link */
+    
+}
+
+nav a:hover {
+    opacity: 1; /* Full opacity on hover */
+}
+
+.active {
+    opacity: 1; /* Link attivo è visibile completamente */
+}
+
+/* Sezione per i titoli dei progetti */
+.project-titles {
+    position: fixed;
+    top: 2.6rem;
+    left: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    z-index: 1000;
+}
+
+.project-title {
+    opacity: 0.5; /* Set the default semi-transparent opacity */
+    transition: opacity 0.3s ease; /* Smooth transition for opacity */
+    font-size: 12pt;
+    display: flex;
+    align-items: center;
+    gap: 60pt; /* Spazio tra il numero e il titolo */
+    transform: translateY(calc(100vh - 15rem));
+    transition: transform 0.5s ease;
+    position: absolute;
+    top: 0;
+    
+}
+
+.project-title-detail {
+    opacity: 1; /* Set the default semi-transparent opacity */
+    font-size: 12pt;
+    display: flex;
+    align-items: center;
+    gap: 54pt; /* Spazio tra il numero e il titolo */
+    position: fixed;
+    padding-right: 2.3rem;
+    padding-top: 2.4rem;
+    z-index: 900;
+    top: 0.2rem;
+    
+}
+
+.project-title-detail span {
+    display: inline-block;
+    width: 1.55rem;
+    text-align: justify;
+    font-size: 12pt; /* Adatta la dimensione in base alla viewport */
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.project-title:first-child {
+ opacity: 1; /* Full opacity for the first title initially */
+}
+
+/* Stile per il contenuto principale */
+main {
+    margin-top: 0rem;
+}
+
+/* Configurazione della sezione "work" con altezza e scorrimento verticale */
+#work {
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory; /* Effetto snap */
+}
+
+/* Stile per ogni progetto */
+.project {
+    height: 100vh;
+    scroll-snap-align: start; /* Allinea ogni progetto all'inizio */
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centra il contenuto */
+    padding: 0rem;
+}
+
+.project-image {
+    width: 100vw; 
+    /* height: 100vh; <-- toglilo! */
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000; /* Se vuoi uno sfondo nero */
+    overflow: hidden; /* Previene eventuali scrollbar */
+    margin: 0;       /* Togli eventuali margini */
+    padding: 0;      /* Togli eventuali padding */
+}
+
+
+.project-image img,
+.project-image video {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: scale-down; /* Impedisce allungamento delle immagini/video */
+    z-index: 0;
+}
+
+.project-image video {
+    display: block;   /* Evita spazi bianchi “misteriosi” */
+    width: 100%;      /* Riempi orizzontalmente il contenitore */
+    height: auto;     /* Scala in proporzione */
+    object-fit: contain; 
+    /* Se non vuoi mai tagliare il video, resta su contain;
+       se vuoi “niente bande nere” (ma accetti di tagliare) -> cover */
+}
+
+ /* Sezione per i titoli dei progetti */
+ .home-titles {
+    position: fixed;
+    top: 2.6rem;
+    left: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    z-index: 1000;
+}
+
+.home-title {
+    opacity: 0.5; /* Set the default semi-transparent opacity */
+    transition: opacity 0.3s ease; /* Smooth transition for opacity */
+    font-size: 12pt;
+    display: flex;
+    align-items: center;
+    gap: 54pt; /* Spazio tra il numero e il titolo */
+    transform: translateY(calc(100vh - 15rem));
+    transition: transform 0.5s ease;
+    position: absolute;
+    top: 0;
+    
+}
+
+.home-title span {
+    display: inline-block;
+    width: 1.55rem;
+    text-align: justify;
+    font-size: 12pt; /* Adatta la dimensione in base alla viewport */
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+
+
+
+.home-title:first-child {
+ opacity: 1; /* Full opacity for the first title initially */
+}
+
+.home {
+    height: 100vh;
+    scroll-snap-align: start; /* Allinea ogni progetto all'inizio */
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centra il contenuto */
+    padding: 0rem;
+}
+
+.home-image {
+    width: 100vw; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* Prevent any overflow */
+    background: #000; /* Background color for contrast */
+    padding-left: 0rem;
+    padding-right: 0rem;
+}
+
+.home-image img,
+.home-image video {
+    width: 100vw;
+    height: 100vh;
+    object-fit: contain;
+    background-color: black;
+    display: block;
+    margin: 0 auto;
+}
+
+
+
+
+.detail {
+    height: auto; /* Permette altezza dinamica per ogni progetto */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0rem; /* Padding di 3rem sopra e sotto per distanziare le immagini */
+}
+
+.detail-image {
+    width: 100%;
+}
+
+.detail-image img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    object-fit: contain; /* o cover, a seconda del tuo gusto */
+  }
+
+  .detail-image img,
+  .detail-image video {
+      width: 100%;
+      height: auto;
+      display: block;
+  }
+  
+
+
+
+/* Contenitore principale per le immagini */
+.detail-container {
+    display: grid;     /* Attiva il layout a griglia */
+    gap: 0rem;         /* Distanza tra le celle (immagini) */
+    margin: 0rem 0;    /* Margine (opzionale) */
+}
+
+
+/* 1 colonna */
+.columns-1 {
+    grid-template-columns: 1fr; 
+}
+
+/* 2 colonne */
+.columns-2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+/* 4 colonne */
+.columns-4 { 
+    grid-template-columns: repeat(4, 1fr);
+}
+
+
+
+/* Stile per la sezione "gallery" */
+#gallery {
+    min-height: 100vh;
+    padding: 6rem 2rem 2rem;
+    margin-left: 2rem;
+}
+
+/* Stile per la sezione "about" */
+#about {
+    min-height: 100vh;
+    padding: 6rem 2rem 2rem;
+    margin-left: auto;
+    margin-right: 2rem;
+    text-align: right;
+}
+
+.hidden {
+    display: none; /* Nasconde le sezioni non attive */
+}
+
+/* Main About section styling */
+#about {
+    min-height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: right;
+    justify-content: right;
+    flex-direction: column;
+    padding: 0.0rem;
+    box-sizing: border-box;
+    background: #000;
+    color: white;
+    text-align: left;
+}
+
+/* Main text style (same as navigation text) */
+#about .main-text {
+    font-size: 22pt;
+    line-height: 110%;
+    font-weight: normal;
+    margin-bottom: 3rem;
+    margin-top: 2.7rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    /* Add the text-indent property below */
+    text-indent: 73pt; /* Adjust '2rem' to your preferred fixed indent size */
+}
+#about .main-textNOPAD {
+    font-size: 22pt;
+    line-height: 110%;
+    font-weight: medium;
+    margin-bottom: 0.2rem;
+    margin-top: 4rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    opacity: 100%;
+    hyphens: no;
+    /* Add the text-indent property below */
+    text-indent: 71pt; /* Adjust '2rem' to your preferred fixed indent size */
+}
+
+/* Secondary text styling */
+#about .secondary-textINDENT {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 110%;
+    gap: 2rem;
+    width: 100%;
+    max-width: 85%; /* Max width for readability */
+    margin-left: 79pt;
+    margin-bottom: 0.5rem;
+}
+
+/* Columns layout for secondary details */
+#about .detail-section {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 1rem; /* Distanza tra le sezioni */
+}
+
+
+#about .column {
+    display: flex;
+    flex-direction: column;
+    gap: 0.001rem; /* Aumenta lo spazio tra righe */
+}
+
+
+.column-row {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.column-row span {
+    display: table-cell;
+    padding: 0.1rem 0.5rem;
+    vertical-align: top;
+    font-size: 12pt;
+    word-wrap: break-word;
+}
+
+.column-row span:nth-child(1) {
+    width: 25%; /* Titolo tipo "Work", "Education" */
+}
+
+.column-row span:nth-child(2) {
+    width: 25%; /* Data */
+}
+
+.column-row span:nth-child(3) {
+    width: 50%; /* Descrizione */
+}
+
+.video-wrapper {
+    position: relative;
+    display: block; /* <-- cambia da inline-block */
+    width: 100%;
+    height: auto; /* aggiunto per consistenza */
+}
+
+  
+  .sound-toggle {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 16px;
+    font-family: 'SuisseIntl', sans-serif;
+    cursor: pointer;
+    z-index: 10;
+  }
+  
+  .video-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+  }
+
+  .video-container video {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+
+
+
+
+
+/* Media query per schermi fino a 768px */
+@media (max-width: 768px) {
+    .left-nav {
+        gap: 1rem; /* Spaziatura tra i link */
+    }
+    nav a {
+        font-size: 16pt;
+    }
+
+    #about .main-text {
+        font-size: 16pt;
+        text-indent: 51pt; 
+        margin-top: 2rem;
+    }
+   
+    #about .main-textNOPAD{
+        font-size: 16pt;
+        text-indent: 51pt; 
+        margin-top: 3.5rem;
+    }
+
+    #about .secondary-textINDENT {
+        font-size: 11pt;
+        margin-left: 57pt;
+        width: 100%;
+        max-width: 80%; /* Max width for readability */
+    }
+
+    .project-titles {
+        top: 2.18rem;
+    }
+    
+    .project-title {
+        font-size: 11pt;
+        gap: 40pt; /* Spazio tra il numero e il titolo */
+        
+    }
+
+    .home-title {
+        font-size: 11pt;
+        gap: 32.5pt; /* Spazio tra il numero e il titolo */
+        
+    }
+
+    .home-titles {
+        top: 2.18rem;
+    }
+    
+    .project-title-detail {
+        font-size: 11pt;
+        gap: 32.5pt; /* Spazio tra il numero e il titolo */
+        padding-top: 2rem;
+    }
+
+    /* 2 colonne */
+.columns-2 {
+    grid-template-columns: repeat(1, 1fr);
+}
+
+/* 4 colonne */
+.columns-4 { 
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.column-row span {
+    font-size: 11pt;
+}
+}

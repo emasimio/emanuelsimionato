@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, sans-serif;
+            color: white;
+        }
+
+        body {
+            overflow-x: hidden;
+            background: #000;
+        }
+
+        /* Stili per la barra di navigazione */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 0.5rem;
+            background: hsla(0, 0%, 0%, 0); /* Sfondo semi-trasparente */
+            backdrop-filter: blur(0px); /* Effetto di sfocatura */
+            z-index: 1000; /* Porta la barra in primo piano */
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .left-nav {
+            display: flex;
+            gap: 1.5rem; /* Spaziatura tra i link */
+        }
+
+        /* Stili per i link nella barra di navigazione */
+        nav a {
+        text-decoration: none;
+        color: white;
+        font-weight: Regular;
+        font-size: 22px;
+        opacity: 0.5; /* Default opacity for all links */
+        transition: opacity 0.3s ease; /* Smooth transition for hover */
+         }
+        nav a.active {
+            opacity: 1; /* Full opacity for the active link */
+        }
+
+        nav a:hover {
+            opacity: 1; /* Full opacity on hover */
+        }
+
+        .active {
+            opacity: 1; /* Link attivo è visibile completamente */
+        }
+
+        /* Sezione per i titoli dei progetti */
+        .home-titles {
+            position: fixed;
+            top: 2.5rem;
+            left: 0.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            z-index: 1000;
+        }
+
+        .home-title {
+            opacity: 0.5; /* Set the default semi-transparent opacity */
+            transition: opacity 0.3s ease; /* Smooth transition for opacity */
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 3.6rem; /* Spazio tra il numero e il titolo */
+            transform: translateY(calc(100vh - 15rem));
+            transition: transform 0.5s ease;
+            position: absolute;
+            top: 0;
+            
+        }
+
+        .home-title:first-child {
+         opacity: 1; /* Full opacity for the first title initially */
+        }
+
+        /* Stile per il contenuto principale */
+        main {
+            margin-top: 0rem;
+        }
+
+        /* Configurazione della sezione "work" con altezza e scorrimento verticale */
+        #work {
+            height: 100vh;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory; /* Effetto snap */
+        }
+
+        /* Stile per ogni progetto */
+        .home {
+            height: 100vh;
+            scroll-snap-align: start; /* Allinea ogni progetto all'inizio */
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Centra il contenuto */
+            padding: 0rem;
+        }
+
+        .home-image {
+            width: 100vw; /* Full viewport width */
+            height: 100vh; /* Full viewport height */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden; /* Prevent any overflow */
+            background: #000; /* Background color for contrast */
+            padding-left: 0rem;
+            padding-right: 0rem;
+}
+
+        .home-image img,
+        .home-image video {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain; /* Impedisce allungamento delle immagini/video */
+        }
+
+        /* Stile per la sezione "gallery" */
+        #gallery {
+            min-height: 100vh;
+            padding: 6rem 2rem 2rem;
+            margin-left: 2rem;
+        }
+
+        /* Stile per la sezione "about" */
+        #about {
+            min-height: 100vh;
+            padding: 6rem 2rem 2rem;
+            margin-left: auto;
+            margin-right: 2rem;
+            text-align: right;
+        }
+
+        .hidden {
+            display: none; /* Nasconde le sezioni non attive */
+        }
+
+        /* Main About section styling */
+        #about {
+            min-height: 100vh;
+            width: 100vw;
+            display: flex;
+            align-items: right;
+            justify-content: right;
+            flex-direction: column;
+            padding: 0.5rem;
+            box-sizing: border-box;
+            background: #000;
+            color: white;
+            text-align: left;
+        }
+
+        /* Main text style (same as navigation text) */
+        #about .main-text {
+            font-size: 22px; /* Match navigation text size */
+            font-weight: normal;
+            margin-bottom: 10rem; /* Space below main text */
+            margin-top: 1.5rem;
+        }
+
+        /* Secondary text styling */
+        #about .secondary-text {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            width: 100%;
+            max-width: 80%; /* Max width for readability */
+        }
+
+        /* Columns layout for secondary details */
+        #about .detail-section {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        #about .column {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.5rem;
+            flex: 1;
+        }
+
+        /* Styles for each row in the columns */
+        #about .column-row {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        #about .column-row span {
+            width: 33%; /* Distribute space for 3 columns */
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <!-- Barra di navigazione -->
+    <nav>
+        <div class="left-nav">
+            <a href="#work" class="active" onclick="showSection('work')">Work</a>
+            <a href="#gallery" onclick="showSection('gallery')">Gallery</a>
+        </div>
+        <div class="right-nav">
+            <a href="#about" onclick="showSection('about')">Emanuel Simionato</a>
+        </div>
+    </nav>
+
+    <!-- Titoli dei progetti fissi sulla sinistra -->
+    <div class="home-titles">
+        <div class="home-title" data-index="0"><span>01</span> GreenGleam</div>
+        <div class="home-title" data-index="1"><span>02</span> Disordine</div>
+        <div class="home-title" data-index="2"><span>03</span> Wonderlab</div>
+        <div class="home-title" data-index="3"><span>04</span> DTA</div>
+        <div class="home-title" data-index="4"><span>05</span> Machines</div>
+        <div class="home-title" data-index="5"><span>06</span> Vote</div>
+        <div class="home-title" data-index="6"><span>07</span> SpazioLuce</div>
+        <div class="home-title" data-index="7"><span>08</span> Lunatica</div>
+    </div>
+
+    <!-- Contenuto principale con sezioni scorrevoli -->
+    <main>
+        <!-- Sezione dei progetti (Work) con immagini e video -->
+        <section id="work">
+            <div class="home">
+                <div class="home-image">
+                    <img src="cover/GreenGleam.jpg" alt="GreenGleam Project Cover">
+                </div>
+            </div>
+            <div class="home">
+                <div class="home-image">
+                    <video src="cover/Disordine.mp4" autoplay loop muted></video>
+                </div>
+            </div>
+            <div class="home">
+                <div class="home-image">
+                    <video src="cover/DTA.mp4" autoplay loop muted></video>
+                </div>
+            </div>
+            <div class="home">
+                <div class="home-image">
+                    <img src="cover/Lunatica.jpg" alt="Lunatica Project Cover">
+                </div>
+            </div>
+            <div class="home">
+                <div class="home-image">
+                    <img src="cover/Machines.jpg" alt="Machines Project Cover">
+                </div>
+            </div>
+            <div class="home">
+                <div class="home-image">
+                    <video src="cover/Vote.mp4" autoplay loop muted></video>
+                </div>
+            </div>
+            <div class="home">
+                <div class="home-image">
+                    <img src="cover/SpazioLuce.jpg" alt="SpazioLuce Project Cover"></img>
+                </div>
+            </div>
+            <div class="home">
+                <div class="home-image">
+                    <video src="cover/Wonderlab.mp4" autoplay loop muted></video>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sezione della galleria (Gallery) nascosta inizialmente -->
+        <section id="gallery" class="hidden">
+            <h2>Gallery</h2>
+        </section>
+
+        <!-- Sezione "About" nascosta inizialmente -->
+        <!-- "About" section -->
+<section id="about" class="hidden">
+    <!-- Main Text -->
+    <div class="main-text">
+        Visual Designer with a particular interest in brand design and motion design. Thanks to education at IUAV University of Venice and at the Politechnic of Milan various work experiences both as a freelancer and as an employee, they have developed a broad skill set ranging from digital and motion design to print graphics. Their work mainly focuses on the cultural, musical, and museum sectors.
+    </div>
+    
+    <!-- Secondary Text -->
+    <div class="secondary-text">
+        <!-- Education Section -->
+        <div class="detail-section">
+            <div class="column">
+                <div class="column-row">
+                    <span>Education</span>
+                    <span>2019—2023</span>
+                    <span>Università IUAV di Venezia 110 cum laude</span>
+                </div>
+                <div class="column-row">
+                    <span></span>
+                    <span>2023—now</span>
+                    <span>Politecnico di Milano</span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Work Section -->
+        <div class="detail-section">
+            <div class="column">
+                <div class="column-row">
+                    <span>Work</span>
+                    <span>2022</span>
+                    <span>Tassinari/Vetta</span>
+                    <span></span>
+                </div>
+                <div class="column-row">
+                    <span></span>
+                    <span>2021—2023</span>
+                    <span>New Drop</span>
+                    <span></span>
+                </div>
+                <div class="column-row">
+                    <span></span>
+                    <span>2023—now</span>
+                    <span>Freelance</span>
+                    <span></span>
+                </div>
+                <div class="column-row">
+                    <span></span>
+                    <span>2023—now</span>
+                    <span>Latter, Co-founder</span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Featuring & Awards Section -->
+        <div class="detail-section">
+            <div class="column">
+                <div class="column-row">
+                    <span>Featuring & Awards</span>
+                    <span>2023</span>
+                    <span>Pittogramma</span>
+                    <span></span>
+                </div>
+                <div class="column-row">
+                    <span></span>
+                    <span>2024</span>
+                    <span>Neologia</span>
+                    <span></span>
+                </div>
+                <div class="column-row">
+                    <span></span>
+                    <span>2024</span>
+                    <span>Demofestival</span>
+                    <span></span>
+                </div>
+                <div class="column-row">
+                    <span></span>
+                    <span>2024</span>
+                    <span>ADI Index</span>
+                    <span></span>
+                </div>
+                <div class="column-row">
+                    <span></span>
+                    <span>2024</span>
+                    <span>Pittogramma</span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Talk Section -->
+        <div class="detail-section">
+            <div class="column">
+                <div class="column-row">
+                    <span>Talk</span>
+                    <span>2024</span>
+                    <span>Pittogramma</span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    </main>
+
+    <script>
+        const workSection = document.getElementById('work'); // Sezione principale dei progetti
+        const homeTitles = document.querySelectorAll('.home-title'); // Titoli dei progetti
+        
+        // Posiziona ogni titolo in base all'ordine
+        homeTitles.forEach((title, index) => {
+            title.style.top = `${index * 1.35}rem`;
+            title.style.transform = 'translateY(calc(100vh - 15rem))';
+        });
+
+        // Funzione per aggiornare la posizione dei titoli dei progetti durante lo scroll
+        function updateProjectTitles() {
+    const homes = document.querySelectorAll('.home');
+    const scrollPosition = workSection.scrollTop;
+    const windowHeight = window.innerHeight;
+    let activeIndex = 0;
+    
+    homes.forEach((home, index) => {
+        const homeTop = home.offsetTop;
+        if (scrollPosition >= homeTop - windowHeight / 2) {
+            activeIndex = index;
+        }
+    });
+
+    homeTitles.forEach((title, index) => {
+        if (index <= activeIndex) {
+            title.style.transform = `translateY(${index * 0}rem)`;
+            title.style.opacity = index === activeIndex ? '1' : '0.5'; // Full opacity only for the active title
+        } else {
+            title.style.transform = 'translateY(calc(100vh - 15rem))';
+            title.style.opacity = '0.5'; // Set opacity back to semi-transparent for inactive titles
+        }
+    });
+}
+
+
+        workSection.addEventListener('scroll', updateProjectTitles); // Aggiunge evento di scroll per aggiornare i titoli
+
+        // Mostra una specifica sezione e nasconde le altre
+        function showSection(sectionId) {
+            document.querySelectorAll('section').forEach(section => {
+                section.classList.add('hidden');
+            });
+            
+            document.getElementById(sectionId).classList.remove('hidden');
+            
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            const homeTitlesContainer = document.querySelector('.home-titles');
+            homeTitlesContainer.style.display = sectionId === 'work' ? 'flex' : 'none';
+
+            if (sectionId === 'work') {
+                updateProjectTitles(); // Aggiorna i titoli se si torna alla sezione "work"
+            }
+        }
+
+        document.getElementById('work').classList.remove('hidden'); // Mostra inizialmente la sezione "work"
+        homeTitles[0].style.transform = 'translateY(0)'; // Imposta il primo titolo come visibile all'avvio
+    </script>
+</body>
+</html>

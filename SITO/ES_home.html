@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+<link rel="stylesheet" href="ES_style.css">
+</head>
+<body>
+    <!-- Barra di navigazione -->
+    <nav>
+        <div class="left-nav">
+            <a href="#work" class="active" onclick="showSection('work')">Work</a>
+            <a href="ES_gallery.html" onclick="showSection('gallery')">Gallery</a>
+        </div>
+        <div class="right-nav">
+            <a href="ES_about.html" onclick="showSection('about')">Emanuel Simionato</a>
+        </div>
+    </nav>
+
+    <!-- Titoli dei progetti fissi sulla sinistra -->
+    <div class="home-titles">
+        <div class="home-title" data-index="0"><span>01</span> BeyondWaste</div>
+        <div class="home-title" data-index="1"><span>02</span> Digital_Forest</div>
+        <div class="home-title" data-index="6"><span>08</span> FrezzaVibes</div>
+        <div class="home-title" data-index="2"><span>03</span> GreenGleam</div>
+        <div class="home-title" data-index="3"><span>04</span> Disordine</div>
+        <div class="home-title" data-index="4"><span>05</span> Machines</div>
+        <div class="home-title" data-index="5"><span>06</span> PointsProj</div>
+        <div class="home-title" data-index="6"><span>07</span> DTAType</div>
+    </div>
+
+    <!-- Contenuto principale con sezioni scorrevoli -->
+    <main>
+        <section id="work">
+
+            <div class="home">
+                <div class="home-image">
+                    <a href="ES_BeyondWaste.html" class="home-image">
+                        <img src="cover/BW01.webp" alt="BW Cover">
+                    </a>
+                </div>
+            </div>
+
+            <div class="home">
+                <div class="home-image">
+                    <a href="ES_DigitalForest.html" class="home-image">
+                    <img src="cover/DigitalForest2.webp" alt="DigitalForest Project Cover">
+                    </a>
+                </div>
+            </div>
+
+            <div class="home">
+                <div class="home-image">
+                    <a href="ES_Frezza.html" class="home-image">
+                        <video muted playsinline preload="auto" class="responsive-video autoplay-video">
+                            <source src="https://www.dropbox.com/scl/fi/efxk2ldlfidrv3lgozlg4/Disordine09.mp4?rlkey=fkfztfcy8rhg8u6rxoavz0vf0&st=l34l7kua&raw=1" type="video/mp4">
+                            Your browser does not support the video tag.
+                          </video>
+                    </a>
+                </div>
+            </div>
+ 
+
+            <div class="home">
+                <a href="ES_GreenGleam.html" class="home-image">
+                <img src="cover/GG1.webp" alt="GreenGleam Project Cover">
+                </a>
+            </div>
+
+            <div class="home">
+                <div class="home-image">
+                    <a href="ES_Disordine.html" class="home-image">
+                        <video muted playsinline preload="auto" class="responsive-video autoplay-video">
+                            <source src="https://www.dropbox.com/scl/fi/efxk2ldlfidrv3lgozlg4/Disordine09.mp4?rlkey=fkfztfcy8rhg8u6rxoavz0vf0&st=l34l7kua&raw=1" type="video/mp4">
+                            Your browser does not support the video tag.
+                          </video>
+                    </a>
+                </div>
+            </div>
+
+            <div class="home">
+                <a href="ES_Machines.html" class="home-image">
+                <img src="cover/Machines1.webp" alt="Machines Project Cover">
+                </a>
+            </div>
+
+            <div class="home">
+                <a href="ES_Points.html" class="home-image">
+                <img src="cover/Points2.webp" alt="Points Project Cover">
+                </a>
+            </div>
+
+            <div class="home">
+                <div class="home-image">
+                    <a href="ES_DTA.html" class="home-image">
+                        <video muted playsinline preload="auto" class="responsive-video autoplay-video">
+                            <source src="https://www.dropbox.com/scl/fi/efxk2ldlfidrv3lgozlg4/Disordine09.mp4?rlkey=fkfztfcy8rhg8u6rxoavz0vf0&st=l34l7kua&raw=1" type="video/mp4">
+                            Your browser does not support the video tag.
+                          </video>
+                    </a>
+                </div>
+            </div>
+
+
+        
+    </section>
+</main>
+<script src="ES_script.js"></script>
+</body>
+</html>
+
